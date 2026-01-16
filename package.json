@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "16.1.2",
@@ -15,10 +15,11 @@
     "react-hot-toast": "^2.6.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "daisyui": "^5.5.14",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.10",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.10",
     "eslint": "^9",
-    "eslint-config-next": "16.1.2",
-    "tailwindcss": "^4"
+    "eslint-config-next": "16.1.2"
   }
 }

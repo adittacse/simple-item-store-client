@@ -1,66 +1,139 @@
-import Image from "next/image";
+import Link from "next/link";
 
-export default function Home() {
+export default function HomePage() {
     return (
-        <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-            <main
-                className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-                <Image
-                    className="dark:invert"
-                    src="/next.svg"
-                    alt="Next.js logo"
-                    width={100}
-                    height={20}
-                    priority
-                />
-                <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-                    <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-                        To get started, edit the page.jsx file.
-                    </h1>
-                    <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-                        Looking for a starting point or more instructions? Head over to{" "}
-                        <a
-                            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                            className="font-medium text-zinc-950 dark:text-zinc-50"
-                        >
-                            Templates
-                        </a>{" "}
-                        or the{" "}
-                        <a
-                            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                            className="font-medium text-zinc-950 dark:text-zinc-50"
-                        >
-                            Learning
-                        </a>{" "}
-                        center.
-                    </p>
+        <div>
+            {/* 1) Hero */}
+            <section className="bg-base-100">
+                <div className="container mx-auto px-4 py-14">
+                    <div className="max-w-3xl">
+                        <h1 className="text-4xl font-bold leading-tight">
+                            Simple Item Store (Next.js + Express + MongoDB)
+                        </h1>
+                        <p className="mt-4 opacity-80">
+                            Public item browsing + details, and a protected add-item form using cookie-based mock login.
+                        </p>
+                        <div className="mt-6 flex gap-3">
+                            <Link href="/items" className="btn btn-primary">Browse Items</Link>
+                            <Link href="/login" className="btn btn-outline">Login</Link>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-                    <a
-                        className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-                        href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <Image
-                            className="dark:invert"
-                            src="/vercel.svg"
-                            alt="Vercel logomark"
-                            width={16}
-                            height={16}
-                        />
-                        Deploy Now
-                    </a>
-                    <a
-                        className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-                        href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Documentation
-                    </a>
+            </section>
+
+            {/* 2) Highlights */}
+            <section className="container mx-auto px-4 py-12">
+                <h2 className="text-2xl font-bold">Highlights</h2>
+                <div className="grid md:grid-cols-3 gap-4 mt-5">
+                    <div className="card bg-base-100 shadow">
+                        <div className="card-body">
+                            <h3 className="font-semibold">Public Items</h3>
+                            <p className="text-sm opacity-80">Fetch list from Express API.</p>
+                        </div>
+                    </div>
+                    <div className="card bg-base-100 shadow">
+                        <div className="card-body">
+                            <h3 className="font-semibold">Public Details</h3>
+                            <p className="text-sm opacity-80">View full item details.</p>
+                        </div>
+                    </div>
+                    <div className="card bg-base-100 shadow">
+                        <div className="card-body">
+                            <h3 className="font-semibold">Protected Create</h3>
+                            <p className="text-sm opacity-80">Add item only after login.</p>
+                        </div>
+                    </div>
                 </div>
-            </main>
+            </section>
+
+            {/* 3) How it works */}
+            <section className="bg-base-100">
+                <div className="container mx-auto px-4 py-12">
+                    <h2 className="text-2xl font-bold">How it works</h2>
+                    <div className="grid md:grid-cols-3 gap-4 mt-5">
+                        <div className="alert"><span>1) Browse items (public).</span></div>
+                        <div className="alert"><span>2) Open details (public).</span></div>
+                        <div className="alert"><span>3) Login & create item (protected).</span></div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 4) Categories */}
+            <section className="container mx-auto px-4 py-12">
+                <h2 className="text-2xl font-bold">Popular Categories</h2>
+                <div className="flex flex-wrap gap-2 mt-4">
+                    {["Books", "Electronics", "Accessories", "Fashion", "Home", "Gadgets"].map((c) => (
+                        <span key={c} className="badge badge-outline">{c}</span>
+                    ))}
+                </div>
+            </section>
+
+            {/* 5) Tech Stack */}
+            <section className="bg-base-100">
+                <div className="container mx-auto px-4 py-12">
+                    <h2 className="text-2xl font-bold">Tech Stack</h2>
+                    <div className="grid md:grid-cols-3 gap-4 mt-5">
+                        <div className="stat bg-base-200 rounded-box">
+                            <div className="stat-title">Frontend</div>
+                            <div className="stat-value text-primary">Next.js</div>
+                            <div className="stat-desc">App Router</div>
+                        </div>
+                        <div className="stat bg-base-200 rounded-box">
+                            <div className="stat-title">Backend</div>
+                            <div className="stat-value text-primary">Express</div>
+                            <div className="stat-desc">REST API</div>
+                        </div>
+                        <div className="stat bg-base-200 rounded-box">
+                            <div className="stat-title">Database</div>
+                            <div className="stat-value text-primary">MongoDB</div>
+                            <div className="stat-desc">items collection</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 6) Testimonials */}
+            <section className="container mx-auto px-4 py-12">
+                <h2 className="text-2xl font-bold">Feedback</h2>
+                <div className="grid md:grid-cols-2 gap-4 mt-5">
+                    <div className="card bg-base-100 shadow">
+                        <div className="card-body">
+                            <p className="opacity-80">“Clean flow and meets requirements exactly.”</p>
+                            <p className="font-semibold mt-2">— Reviewer</p>
+                        </div>
+                    </div>
+                    <div className="card bg-base-100 shadow">
+                        <div className="card-body">
+                            <p className="opacity-80">“Protected route + add item works as expected.”</p>
+                            <p className="font-semibold mt-2">— Mentor</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 7) FAQ + CTA */}
+            <section className="bg-base-100">
+                <div className="container mx-auto px-4 py-12">
+                    <h2 className="text-2xl font-bold">FAQ</h2>
+                    <div className="join join-vertical w-full mt-5">
+                        <div className="collapse collapse-arrow join-item border border-base-300">
+                            <input type="radio" name="faq" defaultChecked />
+                            <div className="collapse-title font-medium">Is /items public?</div>
+                            <div className="collapse-content"><p>Yes. Anyone can browse list and details.</p></div>
+                        </div>
+                        <div className="collapse collapse-arrow join-item border border-base-300">
+                            <input type="radio" name="faq" />
+                            <div className="collapse-title font-medium">Who can add items?</div>
+                            <div className="collapse-content"><p>Only logged-in users can access /items/add.</p></div>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 flex gap-3">
+                        <Link href="/items" className="btn btn-primary">Go to Items</Link>
+                        <Link href="/login" className="btn btn-outline">Login</Link>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 }

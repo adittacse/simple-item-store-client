@@ -1,11 +1,10 @@
 import { fetchItemById } from "@/lib/api";
 
 export default async function ItemDetailsPage({ params }) {
-    let item = null;
+    const { id } = await params;
+    const item = await fetchItemById(id);
 
-    try {
-        item = await fetchItemById(params.id);
-    } catch (e) {
+    if (!item) {
         return (
             <div className="container mx-auto px-4 py-10">
                 <div className="alert alert-error">

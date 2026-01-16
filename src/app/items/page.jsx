@@ -2,9 +2,11 @@ import Link from "next/link";
 import { fetchItems } from "@/lib/api";
 
 export default async function ItemsPage({ searchParams }) {
-    const search = searchParams?.search || "";
-    const category = searchParams?.category || "";
-    const sort = searchParams?.sort || "newest";
+    const sp = await Promise.resolve(searchParams);
+
+    const search = (sp?.search ?? "").toString();
+    const category = (sp?.category ?? "").toString();
+    const sort = (sp?.sort ?? "newest").toString();
 
     const items = await fetchItems({ search, category, sort });
 
@@ -15,9 +17,8 @@ export default async function ItemsPage({ searchParams }) {
                 <Link href="/items/add" className="btn btn-primary">Add Item</Link>
             </div>
 
-            {/* Filters (query-based, matches backend) */}
             <div className="bg-base-100 shadow rounded-box p-4 mb-6">
-                <form className="grid md:grid-cols-4 gap-3">
+                <form action="/items" method="GET" className="grid md:grid-cols-4 gap-3">
                     <input
                         name="search"
                         defaultValue={search}
@@ -35,7 +36,10 @@ export default async function ItemsPage({ searchParams }) {
                         <option value="price_low">Price Low</option>
                         <option value="price_high">Price High</option>
                     </select>
-                    <button className="btn btn-outline">Apply</button>
+
+                    <button type="submit" className="btn btn-outline">
+                        Apply
+                    </button>
                 </form>
             </div>
 
@@ -48,11 +52,7 @@ export default async function ItemsPage({ searchParams }) {
                     {items.map((it) => (
                         <div key={it._id} className="card bg-base-100 shadow-xl">
                             <figure>
-                                <img
-                                    src={it.imageUrl}
-                                    alt={it.name}
-                                    className="h-48 w-full object-cover"
-                                />
+                                <img src={it.imageUrl} alt={it.name} className="h-48 w-full object-cover" />
                             </figure>
                             <div className="card-body">
                                 <h2 className="card-title">{it.name}</h2>

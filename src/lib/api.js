@@ -2,20 +2,18 @@ const BASE = process.env.NEXT_PUBLIC_API_URL;
 
 export async function fetchItems({ search = "", category = "", sort = "newest" } = {}) {
     const url = new URL(`${BASE}/items`);
-    if (search) {
-        url.searchParams.set("search", search);
-    }
-    if (category) {
-        url.searchParams.set("category", category);
-    }
-    if (sort) {
-        url.searchParams.set("sort", sort);
-    }
+
+    const s = String(search ?? "").trim();
+    const c = String(category ?? "").trim();
+    const so = String(sort ?? "newest").trim();
+
+    // only attach if value exists
+    if (s) url.searchParams.set("search", s);
+    if (c) url.searchParams.set("category", c);
+    if (so) url.searchParams.set("sort", so);
 
     const res = await fetch(url.toString(), { cache: "no-store" });
-    if (!res.ok) {
-        throw new Error("Failed to fetch items");
-    }
+    if (!res.ok) throw new Error("Failed to fetch items");
     return res.json();
 }
 

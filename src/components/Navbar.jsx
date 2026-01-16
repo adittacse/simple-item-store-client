@@ -16,9 +16,9 @@ export default async function Navbar() {
                 <ul className="menu menu-horizontal px-1">
                     <li><Link href="/">Home</Link></li>
                     <li><Link href="/items">Items</Link></li>
-                    <li><Link href="/login">Login</Link></li>
                     {
-                        loggedIn ? <li><Link href="/items/add">Add Item</Link></li> : null
+                        loggedIn ? <li><Link href="/items/add">Add Item</Link></li>
+                            : <li><Link href="/login">Login</Link></li>
                     }
                 </ul>
             </div>
